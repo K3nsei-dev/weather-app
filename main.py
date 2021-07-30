@@ -23,7 +23,7 @@ def getweather(city):
         city = json['name']
         country = json['sys']
         temp_kelvin = json['main']['temp']
-        temp_celsius = temp_kelvin-273.15.__round__()
+        temp_celsius = temp_kelvin - 273.15.__round__()
         weather1 = json['weather'][0]['main']
         final = city, country, temp_kelvin, temp_celsius.__round__(), weather1
         return final
@@ -38,7 +38,7 @@ def search():
     weather = getweather(city)
     if weather:
         location_lbl.config(text='{} ,{}'.format(weather[0], weather[1]))
-        temperature_label.configure(text=str(weather[3])+" Degree Celsius")
+        temperature_label.configure(text=str(weather[3]) + " Degree Celsius")
         weather_l.config(text=weather[4])
     else:
         messagebox.showerror('Error', "Cannot find {}".format(city))
@@ -48,12 +48,12 @@ def search():
 def exit_program():
     return root.destroy()
 
+
 # clear function
 def clear_input():
     city_entry.delete(0, END)
-    location_lbl.delete(0, END)
-    temperature_label.delete(0, END)
-
+    location_lbl.config(text="")
+    temperature_label.config(text="")
 
 
 # Driver Code
@@ -95,13 +95,11 @@ weather_l.place(x=150, y=350)
 
 clear = Button(root, text="Clear", command=clear_input, bg="yellow", font="Consolas 12 bold", borderwidth=12)
 
-clear.place (x=400, y=50)
+clear.place(x=400, y=50)
 
 exit = Button(root, text="Exit", command=exit_program, bg="yellow", font="Consolas 12 bold", borderwidth=12)
 
 exit.place(x=510, y=50)
-
-
 
 # to run the program
 root.mainloop()
